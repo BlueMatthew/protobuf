@@ -193,7 +193,7 @@ void ImmutableEnumFieldLiteGenerator::GenerateMembers(
   if (SupportUnknownEnumValue(descriptor_->file())) {
     WriteFieldEnumValueAccessorDocComment(printer, descriptor_, SETTER);
     printer->Print(variables_,
-                   "private void set$capitalized_name$Value(int value) {\n"
+                   "public void set$capitalized_name$Value(int value) {\n"
                    "  $set_has_field_bit_message$"
                    "  $name$_ = value;\n"
                    "}\n");
@@ -356,20 +356,20 @@ void ImmutableEnumOneofFieldLiteGenerator::GenerateMembers(
   if (SupportUnknownEnumValue(descriptor_->file())) {
     WriteFieldEnumValueAccessorDocComment(printer, descriptor_, SETTER);
     printer->Print(variables_,
-                   "private void set$capitalized_name$Value(int value) {\n"
+                   "public void set$capitalized_name$Value(int value) {\n"
                    "  $set_oneof_case_message$;\n"
                    "  $oneof_name$_ = value;\n"
                    "}\n");
   }
   WriteFieldAccessorDocComment(printer, descriptor_, SETTER);
   printer->Print(variables_,
-                 "private void set$capitalized_name$($type$ value) {\n"
+                 "public void set$capitalized_name$($type$ value) {\n"
                  "  $oneof_name$_ = value.getNumber();\n"
                  "  $set_oneof_case_message$;\n"
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, CLEARER);
   printer->Print(variables_,
-                 "private void clear$capitalized_name$() {\n"
+                 "public void clear$capitalized_name$() {\n"
                  "  if ($has_oneof_case_message$) {\n"
                  "    $clear_oneof_case_message$;\n"
                  "    $oneof_name$_ = null;\n"
@@ -568,7 +568,7 @@ void RepeatedImmutableEnumFieldLiteGenerator::GenerateMembers(
   // Generate private setters for the builder to proxy into.
   printer->Print(
       variables_,
-      "private void ensure$capitalized_name$IsMutable() {\n"
+      "public void ensure$capitalized_name$IsMutable() {\n"
       // Use a temporary to avoid a redundant iget-object.
       "  com.google.protobuf.Internal.IntList tmp = $name$_;\n"
       "  if (!tmp.isModifiable()) {\n"
@@ -578,7 +578,7 @@ void RepeatedImmutableEnumFieldLiteGenerator::GenerateMembers(
       "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, LIST_INDEXED_SETTER);
   printer->Print(variables_,
-                 "private void set$capitalized_name$(\n"
+                 "public void set$capitalized_name$(\n"
                  "    int index, $type$ value) {\n"
                  "  $null_check$"
                  "  ensure$capitalized_name$IsMutable();\n"
@@ -586,14 +586,14 @@ void RepeatedImmutableEnumFieldLiteGenerator::GenerateMembers(
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, LIST_ADDER);
   printer->Print(variables_,
-                 "private void add$capitalized_name$($type$ value) {\n"
+                 "public void add$capitalized_name$($type$ value) {\n"
                  "  $null_check$"
                  "  ensure$capitalized_name$IsMutable();\n"
                  "  $name$_.addInt(value.getNumber());\n"
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, LIST_MULTI_ADDER);
   printer->Print(variables_,
-                 "private void addAll$capitalized_name$(\n"
+                 "public void addAll$capitalized_name$(\n"
                  "    java.lang.Iterable<? extends $type$> values) {\n"
                  "  ensure$capitalized_name$IsMutable();\n"
                  "  for ($type$ value : values) {\n"
@@ -602,28 +602,28 @@ void RepeatedImmutableEnumFieldLiteGenerator::GenerateMembers(
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, CLEARER);
   printer->Print(variables_,
-                 "private void clear$capitalized_name$() {\n"
+                 "public void clear$capitalized_name$() {\n"
                  "  $name$_ = emptyIntList();\n"
                  "}\n");
 
   if (SupportUnknownEnumValue(descriptor_->file())) {
     WriteFieldEnumValueAccessorDocComment(printer, descriptor_, SETTER);
     printer->Print(variables_,
-                   "private void set$capitalized_name$Value(\n"
+                   "public void set$capitalized_name$Value(\n"
                    "    int index, int value) {\n"
                    "  ensure$capitalized_name$IsMutable();\n"
                    "  $name$_.setInt(index, value);\n"
                    "}\n");
     WriteFieldEnumValueAccessorDocComment(printer, descriptor_, LIST_ADDER);
     printer->Print(variables_,
-                   "private void add$capitalized_name$Value(int value) {\n"
+                   "public void add$capitalized_name$Value(int value) {\n"
                    "  ensure$capitalized_name$IsMutable();\n"
                    "  $name$_.addInt(value);\n"
                    "}\n");
     WriteFieldEnumValueAccessorDocComment(printer, descriptor_,
                                           LIST_MULTI_ADDER);
     printer->Print(variables_,
-                   "private void addAll$capitalized_name$Value(\n"
+                   "public void addAll$capitalized_name$Value(\n"
                    "    java.lang.Iterable<java.lang.Integer> values) {\n"
                    "  ensure$capitalized_name$IsMutable();\n"
                    "  for (int value : values) {\n"

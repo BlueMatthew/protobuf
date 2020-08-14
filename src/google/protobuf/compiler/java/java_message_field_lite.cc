@@ -176,7 +176,7 @@ void ImmutableMessageFieldLiteGenerator::GenerateMembers(
   // Field.Builder setField(Field value)
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
-                 "private void set$capitalized_name$($type$ value) {\n"
+                 "public void set$capitalized_name$($type$ value) {\n"
                  "  $null_check$"
                  "  $name$_ = value;\n"
                  "  $set_has_field_bit_message$\n"
@@ -187,7 +187,7 @@ void ImmutableMessageFieldLiteGenerator::GenerateMembers(
   printer->Print(
       variables_,
       "@java.lang.SuppressWarnings({\"ReferenceEquality\"})\n"
-      "private void merge$capitalized_name$($type$ value) {\n"
+      "public void merge$capitalized_name$($type$ value) {\n"
       "  $null_check$"
       "  if ($name$_ != null &&\n"
       "      $name$_ != $type$.getDefaultInstance()) {\n"
@@ -202,7 +202,7 @@ void ImmutableMessageFieldLiteGenerator::GenerateMembers(
   // Field.Builder clearField()
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
-                 "private void clear$capitalized_name$() {"
+                 "public void clear$capitalized_name$() {"
                  "  $name$_ = null;\n"
                  "  $clear_has_field_bit_message$\n"
                  "}\n");
@@ -332,7 +332,7 @@ void ImmutableMessageOneofFieldLiteGenerator::GenerateMembers(
   // Field.Builder setField(Field value)
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
-                 "private void set$capitalized_name$($type$ value) {\n"
+                 "public void set$capitalized_name$($type$ value) {\n"
                  "  $null_check$"
                  "  $oneof_name$_ = value;\n"
                  "  $set_oneof_case_message$;\n"
@@ -342,7 +342,7 @@ void ImmutableMessageOneofFieldLiteGenerator::GenerateMembers(
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(
       variables_,
-      "private void merge$capitalized_name$($type$ value) {\n"
+      "public void merge$capitalized_name$($type$ value) {\n"
       "  $null_check$"
       "  if ($has_oneof_case_message$ &&\n"
       "      $oneof_name$_ != $type$.getDefaultInstance()) {\n"
@@ -357,7 +357,7 @@ void ImmutableMessageOneofFieldLiteGenerator::GenerateMembers(
   // Field.Builder clearField()
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
-                 "private void clear$capitalized_name$() {\n"
+                 "public void clear$capitalized_name$() {\n"
                  "  if ($has_oneof_case_message$) {\n"
                  "    $clear_oneof_case_message$;\n"
                  "    $oneof_name$_ = null;\n"
@@ -528,7 +528,7 @@ void RepeatedImmutableMessageFieldLiteGenerator::GenerateMembers(
 
   printer->Print(
       variables_,
-      "private void ensure$capitalized_name$IsMutable() {\n"
+      "public void ensure$capitalized_name$IsMutable() {\n"
       // Use a temporary to avoid a redundant iget-object.
       "  com.google.protobuf.Internal.ProtobufList<$type$> tmp = $name$_;\n"
       "  if (!tmp.isModifiable()) {\n"
@@ -541,7 +541,7 @@ void RepeatedImmutableMessageFieldLiteGenerator::GenerateMembers(
   // Builder setRepeatedField(int index, Field value)
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
-                 "private void set$capitalized_name$(\n"
+                 "public void set$capitalized_name$(\n"
                  "    int index, $type$ value) {\n"
                  "  $null_check$"
                  "  ensure$capitalized_name$IsMutable();\n"
@@ -551,7 +551,7 @@ void RepeatedImmutableMessageFieldLiteGenerator::GenerateMembers(
   // Builder addRepeatedField(Field value)
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
-                 "private void add$capitalized_name$($type$ value) {\n"
+                 "public void add$capitalized_name$($type$ value) {\n"
                  "  $null_check$"
                  "  ensure$capitalized_name$IsMutable();\n"
                  "  $name$_.add(value);\n"
@@ -560,7 +560,7 @@ void RepeatedImmutableMessageFieldLiteGenerator::GenerateMembers(
   // Builder addRepeatedField(int index, Field value)
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
-                 "private void add$capitalized_name$(\n"
+                 "public void add$capitalized_name$(\n"
                  "    int index, $type$ value) {\n"
                  "  $null_check$"
                  "  ensure$capitalized_name$IsMutable();\n"
@@ -570,7 +570,7 @@ void RepeatedImmutableMessageFieldLiteGenerator::GenerateMembers(
   // Builder addAllRepeatedField(Iterable<Field> values)
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
-                 "private void addAll$capitalized_name$(\n"
+                 "public void addAll$capitalized_name$(\n"
                  "    java.lang.Iterable<? extends $type$> values) {\n"
                  "  ensure$capitalized_name$IsMutable();\n"
                  "  com.google.protobuf.AbstractMessageLite.addAll(\n"
@@ -580,14 +580,14 @@ void RepeatedImmutableMessageFieldLiteGenerator::GenerateMembers(
   // Builder clearAllRepeatedField()
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
-                 "private void clear$capitalized_name$() {\n"
+                 "public void clear$capitalized_name$() {\n"
                  "  $name$_ = emptyProtobufList();\n"
                  "}\n");
 
   // Builder removeRepeatedField(int index)
   WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
-                 "private void remove$capitalized_name$(int index) {\n"
+                 "public void remove$capitalized_name$(int index) {\n"
                  "  ensure$capitalized_name$IsMutable();\n"
                  "  $name$_.remove(index);\n"
                  "}\n");

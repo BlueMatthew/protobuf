@@ -207,7 +207,7 @@ void ImmutableStringFieldLiteGenerator::GenerateMembers(
 
   WriteFieldAccessorDocComment(printer, descriptor_, SETTER);
   printer->Print(variables_,
-                 "private void set$capitalized_name$(\n"
+                 "public void set$capitalized_name$(\n"
                  "    java.lang.String value) {\n"
                  "$null_check$"
                  "  $set_has_field_bit_message$\n"
@@ -215,7 +215,7 @@ void ImmutableStringFieldLiteGenerator::GenerateMembers(
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, CLEARER);
   printer->Print(variables_,
-                 "private void clear$capitalized_name$() {\n"
+                 "public void clear$capitalized_name$() {\n"
                  "  $clear_has_field_bit_message$\n"
                  // The default value is not a simple literal so we want to
                  // avoid executing it multiple times.  Instead, get the default
@@ -225,7 +225,7 @@ void ImmutableStringFieldLiteGenerator::GenerateMembers(
 
   WriteFieldStringBytesAccessorDocComment(printer, descriptor_, SETTER);
   printer->Print(variables_,
-                 "private void set$capitalized_name$Bytes(\n"
+                 "public void set$capitalized_name$Bytes(\n"
                  "    com.google.protobuf.ByteString value) {\n");
   if (CheckUtf8(descriptor_)) {
     printer->Print(variables_, "  checkByteStringIsUtf8(value);\n");
@@ -377,7 +377,7 @@ void ImmutableStringOneofFieldLiteGenerator::GenerateMembers(
 
   WriteFieldAccessorDocComment(printer, descriptor_, SETTER);
   printer->Print(variables_,
-                 "private void ${$set$capitalized_name$$}$(\n"
+                 "public void ${$set$capitalized_name$$}$(\n"
                  "    java.lang.String value) {\n"
                  "$null_check$"
                  "  $set_oneof_case_message$;\n"
@@ -386,7 +386,7 @@ void ImmutableStringOneofFieldLiteGenerator::GenerateMembers(
   printer->Annotate("{", "}", descriptor_);
   WriteFieldAccessorDocComment(printer, descriptor_, CLEARER);
   printer->Print(variables_,
-                 "private void ${$clear$capitalized_name$$}$() {\n"
+                 "public void ${$clear$capitalized_name$$}$() {\n"
                  "  if ($has_oneof_case_message$) {\n"
                  "    $clear_oneof_case_message$;\n"
                  "    $oneof_name$_ = null;\n"
@@ -396,7 +396,7 @@ void ImmutableStringOneofFieldLiteGenerator::GenerateMembers(
 
   WriteFieldStringBytesAccessorDocComment(printer, descriptor_, SETTER);
   printer->Print(variables_,
-                 "private void ${$set$capitalized_name$Bytes$}$(\n"
+                 "public void ${$set$capitalized_name$Bytes$}$(\n"
                  "    com.google.protobuf.ByteString value) {\n");
   printer->Annotate("{", "}", descriptor_);
   if (CheckUtf8(descriptor_)) {
@@ -563,7 +563,7 @@ void RepeatedImmutableStringFieldLiteGenerator::GenerateMembers(
 
   printer->Print(
       variables_,
-      "private void ensure$capitalized_name$IsMutable() {\n"
+      "public void ensure$capitalized_name$IsMutable() {\n"
       // Use a temporary to avoid a redundant iget-object.
       "  com.google.protobuf.Internal.ProtobufList<java.lang.String> tmp =\n"
       "      $name$_;"
@@ -575,7 +575,7 @@ void RepeatedImmutableStringFieldLiteGenerator::GenerateMembers(
 
   WriteFieldAccessorDocComment(printer, descriptor_, LIST_INDEXED_SETTER);
   printer->Print(variables_,
-                 "private void set$capitalized_name$(\n"
+                 "public void set$capitalized_name$(\n"
                  "    int index, java.lang.String value) {\n"
                  "$null_check$"
                  "  ensure$capitalized_name$IsMutable();\n"
@@ -583,7 +583,7 @@ void RepeatedImmutableStringFieldLiteGenerator::GenerateMembers(
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, LIST_ADDER);
   printer->Print(variables_,
-                 "private void add$capitalized_name$(\n"
+                 "public void add$capitalized_name$(\n"
                  "    java.lang.String value) {\n"
                  "$null_check$"
                  "  ensure$capitalized_name$IsMutable();\n"
@@ -591,7 +591,7 @@ void RepeatedImmutableStringFieldLiteGenerator::GenerateMembers(
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, LIST_MULTI_ADDER);
   printer->Print(variables_,
-                 "private void addAll$capitalized_name$(\n"
+                 "public void addAll$capitalized_name$(\n"
                  "    java.lang.Iterable<java.lang.String> values) {\n"
                  "  ensure$capitalized_name$IsMutable();\n"
                  "  com.google.protobuf.AbstractMessageLite.addAll(\n"
@@ -599,13 +599,13 @@ void RepeatedImmutableStringFieldLiteGenerator::GenerateMembers(
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, CLEARER);
   printer->Print(variables_,
-                 "private void clear$capitalized_name$() {\n"
+                 "public void clear$capitalized_name$() {\n"
                  "  $name$_ = $empty_list$;\n"
                  "}\n");
 
   WriteFieldStringBytesAccessorDocComment(printer, descriptor_, LIST_ADDER);
   printer->Print(variables_,
-                 "private void add$capitalized_name$Bytes(\n"
+                 "public void add$capitalized_name$Bytes(\n"
                  "    com.google.protobuf.ByteString value) {\n");
   if (CheckUtf8(descriptor_)) {
     printer->Print(variables_, "  checkByteStringIsUtf8(value);\n");

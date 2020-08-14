@@ -474,7 +474,7 @@ void ImmutableMapFieldLiteGenerator::GenerateMembers(
     WriteFieldDocComment(printer, descriptor_);
     printer->Print(
         variables_,
-        "private java.util.Map<$boxed_key_type$, $value_enum_type$>\n"
+        "public java.util.Map<$boxed_key_type$, $value_enum_type$>\n"
         "getMutable$capitalized_name$Map() {\n"
         "  return new com.google.protobuf.Internal.MapAdapter<\n"
         "      $boxed_key_type$, $value_enum_type$, java.lang.Integer>(\n"
@@ -485,7 +485,7 @@ void ImmutableMapFieldLiteGenerator::GenerateMembers(
       WriteFieldDocComment(printer, descriptor_);
       printer->Print(
           variables_,
-          "private java.util.Map<$boxed_key_type$, $boxed_value_type$>\n"
+          "public java.util.Map<$boxed_key_type$, $boxed_value_type$>\n"
           "getMutable$capitalized_name$ValueMap() {\n"
           "  return internalGetMutable$capitalized_name$();\n"
           "}\n");
@@ -493,7 +493,7 @@ void ImmutableMapFieldLiteGenerator::GenerateMembers(
   } else {
     WriteFieldDocComment(printer, descriptor_);
     printer->Print(variables_,
-                   "private java.util.Map<$type_parameters$>\n"
+                   "public java.util.Map<$type_parameters$>\n"
                    "getMutable$capitalized_name$Map() {\n"
                    "  return internalGetMutable$capitalized_name$();\n"
                    "}\n");

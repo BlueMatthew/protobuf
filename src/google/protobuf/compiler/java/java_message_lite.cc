@@ -292,7 +292,7 @@ void ImmutableMessageLiteGenerator::Generate(io::Printer* printer) {
                    "      $oneof_name$Case_);\n"
                    "}\n"
                    "\n"
-                   "private void clear$oneof_capitalized_name$() {\n"
+                   "public void clear$oneof_capitalized_name$() {\n"
                    "  $oneof_name$Case_ = 0;\n"
                    "  $oneof_name$_ = null;\n"
                    "}\n"

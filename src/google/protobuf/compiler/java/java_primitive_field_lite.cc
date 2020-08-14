@@ -234,7 +234,7 @@ void ImmutablePrimitiveFieldLiteGenerator::GenerateMembers(
 
   WriteFieldAccessorDocComment(printer, descriptor_, SETTER);
   printer->Print(variables_,
-                 "private void set$capitalized_name$($type$ value) {\n"
+                 "public void set$capitalized_name$($type$ value) {\n"
                  "$null_check$"
                  "  $set_has_field_bit_message$\n"
                  "  $name$_ = value;\n"
@@ -242,7 +242,7 @@ void ImmutablePrimitiveFieldLiteGenerator::GenerateMembers(
 
   WriteFieldAccessorDocComment(printer, descriptor_, CLEARER);
   printer->Print(variables_,
-                 "private void clear$capitalized_name$() {\n"
+                 "public void clear$capitalized_name$() {\n"
                  "  $clear_has_field_bit_message$\n");
   JavaType type = GetJavaType(descriptor_);
   if (type == JAVATYPE_STRING || type == JAVATYPE_BYTES) {
@@ -369,7 +369,7 @@ void ImmutablePrimitiveOneofFieldLiteGenerator::GenerateMembers(
 
   WriteFieldAccessorDocComment(printer, descriptor_, SETTER);
   printer->Print(variables_,
-                 "private void set$capitalized_name$($type$ value) {\n"
+                 "public void set$capitalized_name$($type$ value) {\n"
                  "$null_check$"
                  "  $set_oneof_case_message$;\n"
                  "  $oneof_name$_ = value;\n"
@@ -377,7 +377,7 @@ void ImmutablePrimitiveOneofFieldLiteGenerator::GenerateMembers(
 
   WriteFieldAccessorDocComment(printer, descriptor_, CLEARER);
   printer->Print(variables_,
-                 "private void clear$capitalized_name$() {\n"
+                 "public void clear$capitalized_name$() {\n"
                  "  if ($has_oneof_case_message$) {\n"
                  "    $clear_oneof_case_message$;\n"
                  "    $oneof_name$_ = null;\n"
@@ -509,7 +509,7 @@ void RepeatedImmutablePrimitiveFieldLiteGenerator::GenerateMembers(
 
   printer->Print(
       variables_,
-      "private void ensure$capitalized_name$IsMutable() {\n"
+      "public void ensure$capitalized_name$IsMutable() {\n"
       // Use a temporary to avoid a redundant iget-object.
       "  $field_list_type$ tmp = $name$_;\n"
       "  if (!tmp.isModifiable()) {\n"
@@ -520,7 +520,7 @@ void RepeatedImmutablePrimitiveFieldLiteGenerator::GenerateMembers(
 
   WriteFieldAccessorDocComment(printer, descriptor_, LIST_INDEXED_SETTER);
   printer->Print(variables_,
-                 "private void set$capitalized_name$(\n"
+                 "public void set$capitalized_name$(\n"
                  "    int index, $type$ value) {\n"
                  "$null_check$"
                  "  ensure$capitalized_name$IsMutable();\n"
@@ -528,14 +528,14 @@ void RepeatedImmutablePrimitiveFieldLiteGenerator::GenerateMembers(
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, LIST_ADDER);
   printer->Print(variables_,
-                 "private void add$capitalized_name$($type$ value) {\n"
+                 "public void add$capitalized_name$($type$ value) {\n"
                  "$null_check$"
                  "  ensure$capitalized_name$IsMutable();\n"
                  "  $repeated_add$(value);\n"
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, LIST_MULTI_ADDER);
   printer->Print(variables_,
-                 "private void addAll$capitalized_name$(\n"
+                 "public void addAll$capitalized_name$(\n"
                  "    java.lang.Iterable<? extends $boxed_type$> values) {\n"
                  "  ensure$capitalized_name$IsMutable();\n"
                  "  com.google.protobuf.AbstractMessageLite.addAll(\n"
@@ -543,7 +543,7 @@ void RepeatedImmutablePrimitiveFieldLiteGenerator::GenerateMembers(
                  "}\n");
   WriteFieldAccessorDocComment(printer, descriptor_, CLEARER);
   printer->Print(variables_,
-                 "private void clear$capitalized_name$() {\n"
+                 "public void clear$capitalized_name$() {\n"
                  "  $name$_ = $empty_list$;\n"
                  "}\n");
 }
